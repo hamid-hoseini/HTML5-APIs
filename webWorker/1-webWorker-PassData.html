@@ -2,7 +2,9 @@
 <html>
 <body>
 
+input a number: <input type="text" id="inp"/>
 <p>Count numbers: <output id="result"></output></p>
+
 <button onclick="startWorker()">Start Worker</button>
 <button onclick="stopWorker()">Stop Worker</button>
 
@@ -14,7 +16,8 @@
     function startWorker() {
         if(typeof(Worker) !== "undefined") {
             if(typeof(w) == "undefined") {
-                w = new Worker("demo_workers.js");
+                w = new Worker("demo_workers1.js");
+                w.postMessage(parseInt(inp.value));
             }
 
             w.onmessage = function(event) {
